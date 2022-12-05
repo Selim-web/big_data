@@ -89,15 +89,18 @@ for year in years:
         print(edge_max,'-------',edge_tuple_with_max)
     ### GIRVAN NEWMANN END
 
+
+    ## Extraction des communautés depuis le graphe G 
     communities = [G.subgraph(c).copy() for c in nx.connected_components(G)] # list of communities of G
     c = 0
+
     for communitie in communities:
         n = 0
         for node in communitie:
             n+=1
         if n>1:
             nx.draw_circular(communitie,with_labels=True)
-            path = '/Users/selimbouhassatine/big_data/community'+str(c)+'.png'
+            path = '/Users/selimbouhassatine/big_data/community'+str(c)+year+'.png'
             mat.savefig(path)
             mat.clf()
             c+=1
